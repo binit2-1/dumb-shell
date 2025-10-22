@@ -6,6 +6,7 @@
 
 #include "banner.h"
 #include "input.h"
+#include "execute.h"
 
 
 
@@ -26,8 +27,9 @@ void dumb_loop(void)
         {
             perror("getcwd() error");
         }
-        
+
         line = dumb_read();
+        args = dumb_split_line(line);
         
 
     } while (status);

@@ -12,5 +12,5 @@ void print_banner(void) {
     printf("| $$  | $$| $$  | $$| $$ | $$ | $$| $$  | $$         /$$  \\ $$| $$  | $$| $$_____/| $$| $$       /$$  /$$/\n");
     printf("| $$$$$$$/|  $$$$$$/| $$ | $$ | $$| $$$$$$$/        |  $$$$$$/| $$  | $$|  $$$$$$$| $$| $$      |__//$$$/ \n");
     printf("|_______/  \\______/ |__/ |__/ |__/|_______/          \\______/ |__/  |__/ \\_______/|__/|__/         |___/  \n");
-    printf("\nWelcome to dumb-shell! (made by a dumb developer) Type 'help' for commands.\n\n");
+    printf("\nWelcome to dumb-shell! (made by a dumb developer) Type 'help' for commands.\n\n\n");
 }
