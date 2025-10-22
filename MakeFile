@@ -1,0 +1,38 @@
+# Compiler and flags
+CC = gcc
+CFLAGS = -Wall -Wextra -g
+LDFLAGS =
+
+# Directories
+SRC_DIR = src
+INC_DIR = include
+BIN_DIR = bin
+
+# Source files
+SRCS = $(wildcard $(SRC_DIR)/*.c)
+OBJS = $(SRCS:.c=.o)
+
+# Executable
+TARGET = $(BIN_DIR)/dumb-shell
+
+# Default target
+all: $(BIN_DIR) $(TARGET)
+
+# Build executable
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -I$(INC_DIR) $^ -o $@ $(LDFLAGS)
+
+# Compile source files to object files
+%.o: %.c
+	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+
+# Create bin directory if it doesn't exist
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
+
+# Clean compiled files
+clean:
+	rm -f $(SRC_DIR)/*.o $(TARGET)
+
+# Phony targets
+.PHONY: all clean
