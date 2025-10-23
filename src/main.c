@@ -7,15 +7,13 @@
 #include "banner.h"
 #include "input.h"
 #include "splitline.h"
-
-
-
+#include "execute.h"
 
 void dumb_loop(void)
 {
     char *line;
     char **args;
-    int status = 1;
+    int status;
     do
     {
         char pwd[PATH_MAX];
@@ -30,6 +28,7 @@ void dumb_loop(void)
 
         line = dumb_read();
         args = dumb_split_line(line);
+        status = dumb_execute(args);
         
 
     } while (status);
