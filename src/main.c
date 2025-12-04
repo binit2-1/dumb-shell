@@ -10,6 +10,26 @@
 #include "splitline.h"
 #include "execute.h"
 #include "prompt.h"
+#include "trie.h"
+
+
+void loadHistory(TrieNode* root){
+    char path[PATH_MAX];
+    char *home_directory = getenv("HOME");
+    if(home_directory == NULL){
+        return;
+    }
+    snprintf(path, sizeof(path), "%s/.dumb_shell_history", home_directory);
+    FILE* file = fopen(path, "r");
+    if(file == NULL){
+        return;
+    }
+    char buffer[1024];
+    while (fgets(buffer, sizeof(buffer), filePointer) != NULL){
+        buffer[strcspn(buffer, "\n")] = 0; // Remove newline character
+        insert(root, buffer);
+    }
+}
 
 void dumb_loop(void)
 {
