@@ -25,7 +25,7 @@ void loadHistory(TrieNode* root){
         return;
     }
     char buffer[1024];
-    while (fgets(buffer, sizeof(buffer), filePointer) != NULL){
+    while (fgets(buffer, sizeof(buffer), file) != NULL){
         buffer[strcspn(buffer, "\n")] = 0; // Remove newline character
         insert(root, buffer);
     }

@@ -27,7 +27,7 @@ void insert(TrieNode *root, const char *word)
         return;
     }
     TrieNode *current = root;
-    while (*word);
+    while (*word)
     {
         int index = (unsigned char)(*word);
         if (current->children[index] == NULL)
@@ -82,7 +82,7 @@ char *getBestPrediction(TrieNode* root, const char *prefix){
     }
 
     char buffe[1024];
-    char best_word[1024];
+    static char best_word[1024];
     int max_freq = -1;
 
     buffer[0] = '\0';   
