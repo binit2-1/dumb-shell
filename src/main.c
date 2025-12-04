@@ -11,11 +11,10 @@
 #include "input.h"
 #include "raw_mode.h"
 
-// Assuming these exist in your other folders based on your description
-// If not, you might need to add declarations or include them
-#include "execute.h"   // Should contain dumb_execute()
-#include "splitline.h" // Should contain dumb_split_line()
-#include "prompt.h"    // Should contain lsh_print_prompt()
+
+#include "execute.h"   
+#include "splitline.h" 
+#include "prompt.h"    
 
 // --- GLOBAL: The Brain ---
 // input.c needs access to this variable via 'extern' to show ghost text
