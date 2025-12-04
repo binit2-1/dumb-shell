@@ -78,7 +78,7 @@ char *dumb_read(void) {
                 size_t ghost_len = strlen(ghost);
                 
                 // Print ghost in dim gray
-                printf("\x1B[2;90m%s\x1B[0m", ghost);
+                printf("\x1B[38;5;240m%s\x1B[0m", ghost);
                 // Move cursor back
                 printf("\x1B[%zuD", ghost_len);
             }
