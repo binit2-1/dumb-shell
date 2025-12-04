@@ -13,7 +13,7 @@ TrieNode *createNode(void)
     }
 
     newNode->frequency = 0;
-    for (itn i = 0; i < ASCII_SIZE; i++)
+    for (int i = 0; i < ASCII_SIZE; i++)
     {
         newNode->children[i] = NULL;
     }
@@ -38,7 +38,7 @@ void insert(TrieNode *root, const char *word)
                 return; // Memory allocation failed
             }
         }
-        current = current->children[index]
+        current = current->children[index];
         word++;
     }
     current->frequency++;
@@ -58,7 +58,7 @@ void countMaxFrequency(TrieNode* node, char* buffer, char* best_word, int* max_f
 
     for(int i = 0; i<ASCII_SIZE; i++){
         if(node->children[i] != NULL){
-            int len strlen(buffer);
+            int len = strlen(buffer);
             buffer[len] = (char)i;
             buffer[len + 1] = '\0';
             countMaxFrequency(node->children[i], buffer, best_word, max_freq);
@@ -72,6 +72,9 @@ char *getBestPrediction(TrieNode* root, const char *prefix){
         return NULL;
     }
     TrieNode* current = root;
+    const char *prefix_start = prefix;
+    
+    // Navigate to the prefix node
     while(*prefix){
         int index = (unsigned char)(*prefix);
         if(current->children[index] == NULL){
@@ -81,17 +84,35 @@ char *getBestPrediction(TrieNode* root, const char *prefix){
         prefix++;
     }
 
-    char buffe[1024];
+    char buffer[1024];
     static char best_word[1024];
     int max_freq = -1;
 
-    buffer[0] = '\0';   
+    // Initialize buffer WITH the prefix
+    strncpy(buffer, prefix_start, sizeof(buffer) - 1);
+    buffer[sizeof(buffer) - 1] = '\0';
     best_word[0] = '\0';
 
     countMaxFrequency(current, buffer, best_word, &max_freq);
 
     if(max_freq > 0){
-        return best_word
+        return best_word;
     }
     return NULL;
+}
+
+void freeTrie(TrieNode* root) {
+    if (!root) {
+        return;
+    }
+    
+    // Recursively free all children
+    for (int i = 0; i < ASCII_SIZE; i++) {
+        if (root->children[i] != NULL) {
+            freeTrie(root->children[i]);
+        }
+    }
+    
+    // Free the current node
+    free(root);
 }

@@ -73,5 +73,8 @@ void lsh_print_prompt(int last_status) {
         // Last command failed
         printf(KRED "%s " KNRM, ICON_PROMPT);
     }
+    
+    // Force output to display before raw mode
+    fflush(stdout);
 }
 
