@@ -78,15 +78,12 @@ void dumb_loop(void)
     do
     {
         // 1. Print Prompt (Visuals)
-        // Assuming your prompt.c handles colors based on status
         lsh_print_prompt(last_status);
 
         // 2. Read Input (The Interactive "Ghost Text" Reader)
-        // This calls your new raw mode logic in input.c
         line = dumb_read(); 
         
         // 3. Save & Learn (Update Brain)
-        // We create a copy because tokenizers often modify the string
         char *line_for_history = strdup(line);
         save_to_history(line_for_history);
         
@@ -96,7 +93,6 @@ void dumb_loop(void)
         free(line_for_history);
 
         // 4. Parse & Execute (Logic)
-        // Assuming these are in your splitline.c and execute.c
         args = dumb_split_line(line);
         status = dumb_execute(args);
 

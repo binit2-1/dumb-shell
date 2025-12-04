@@ -5,7 +5,7 @@
 #include <time.h>
 #include <sys/wait.h> // For WEXITSTATUS
 
-// --- Add these colors (or make sure they are at the top of your file) ---
+
 #define KNRM  "\x1B[0m"   // Reset
 #define KRED  "\x1B[31m"  // Red
 #define KGRN  "\x1B[32m"  // Green
